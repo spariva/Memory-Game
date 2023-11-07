@@ -1,0 +1,35 @@
+/* Color schema based on my wireframe */
+
+:root {
+    /* Cards */
+  --turquesa-oscuro: #3bc9db;
+  --turquesa-claro: #99e9f2;
+  --menta-claro: #96f2d7;
+  --borde-menta: #099268;
+  --navbar-rosita: #ffc9c9;
+  /* Nav */
+  --navbar-azulito: #a5d8ff;
+  --navbar-texto: #495057;
+  --navbar-azulito-oscuro: #4dabf7;
+  --fondo-rosa: #fcc2d7;
+  --fondo-menta: #ebfbee;
+  --dark-color: #343a40;
+  /* Bonus card */
+  --fondo-carta: #eebefa; 
+  --amarillo-carta: #ffec99;
+  --verde-carta: #2f9e44;
+  /* Instructions */
+  --amarillo-fondo: #fff9db;
+}
+
+.botonNav{
+    background-color: var(--navbar-azulito);
+    color: var(--navbar-texto);
+    border-color: var(--navbar-azulito-oscuro);
+}
+
+.botonNav:hover, .botonNav:active{
+    background-color: var(--navbar-azulito-oscuro);
+    color: var(--navbar-texto);
+    border-color: var(--navbar-azulito-oscuro);
+}
