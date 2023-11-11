@@ -13,9 +13,7 @@ To get started, open `index.html` and start playing.
 
 ## Wireframe
 https://excalidraw.com/#json=AwEwVknCUaSenSDV31utH,9YsoEsz3U2sdYki9MXQffQ
-![Alt text](image.png)
-![Alt text](image-1.png)
-
+![Alt text](public/assets/img/image1.png)
 
 
 

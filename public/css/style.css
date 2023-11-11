@@ -38,9 +38,44 @@
     color: white;
 }
 
+/* div{
+    overflow: hidden;
+} */
+
+img {
+    max-width: 90%;
+    height: auto;
+}
+
+.imgContainer{
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+  
+.imgContainer img{
+    /* max-width: 200px;
+    height: 200px; */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+@media (max-width: 900px) {
+    .imgContainer img {
+        max-width: 50px;
+    }
+    .imgContainer {
+        height: 50px;
+    }
+}
+
+
 .player img{
-    max-width: 256px;
-    height: 256px;
+    max-width: 200px;
+    height: 200px;
     aspect-ratio: 1/1;
     border-radius: 1000px;
 
@@ -52,18 +87,19 @@
 }
 
 .player{
+    padding: 4px;
+    background-color: var(--menta-claro);
     height: 180px;
     width:auto;
     aspect-ratio: 1/1;  
     object-fit: scale-down;
-
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .player img {
-        max-width: 200px;
+        max-width: 100px;
     }
     .player {
-        height: 120px;
+        height: 100px;
     }
 }

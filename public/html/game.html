@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta author="Maki Spariva">
     <title>Memory Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -47,22 +48,77 @@
     <div class="container-fluid overflow-hidden px-lg-4 px-md-2 px-0">
         <div class="row gx-5 gap-md-5 gap-sm-2">
             <div class="col-4 border rounded-5 p-sm-4 p-2 ms-3 border-success-subtle" style="background-color: var(--turquesa-oscuro);" id="leftPanel">
-                <div class="row g-2 gap-2">
+                <div class="row gy-3 gap-2">
                     <div class="col-6  p-1">
-                        <div class="player border rounded-3 border-secondary">
+                        <div class="imgContainer player border rounded-3 border-secondary">
                             <img src="../assets/img/Player1.JPG"/>
                         </div>
                     </div>
-                    <div class="col-3 p-3">
-                        Img Cartas
+                    <div class="col-3 p-1">
+                        <div class="imgContainer"> 
+                          <img src="../assets/img/CardsCounter.png"/>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-3 p-3">Img Cartas</div>
+                <div class="row mb-4 mt-2 text-center gap-2" style="min-height: 10%;" id="bonusCardsP1">
+                    <div class="col-3 p-1">
+                      <div class="imgContainer">
+                        <div class="imgContainer"> 
+                          <img src="../assets/img/CardsCounter.png"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-3 p-1">
+                      <div class="imgContainer">
+                        <div class="imgContainer"> 
+                          <img src="../assets/img/CardsCounter.png"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-3 p-1">
+                      <div class="imgContainer">
+                        <div class="imgContainer"> 
+                          <img src="../assets/img/CardsCounter.png"/>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-                
-                <div class="bg-dark-subtle p-">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed eos quia dolorum quas aliquam, magni libero inventore, quis repellat commodi tempora at maiores vero ad ipsam nesciunt culpa officia?
+                <hr>
+                <div class="row mt-4 mb-2 text-center gap-2" style="min-height: 10%;" id="bonusCardsP2">
+                  <div class="col-3 p-1">
+                    <div class="imgContainer">
+                      <div class="imgContainer"> 
+                        <img src="../assets/img/CardsCounter.png"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3 p-1">
+                    <div class="imgContainer">
+                      <div class="imgContainer"> 
+                        <img src="../assets/img/CardsCounter.png"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3 p-1">
+                    <div class="imgContainer">
+                      <div class="imgContainer"> 
+                        <img src="../assets/img/CardsCounter.png"/>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="row gx-5 gy-3 mt-5 justify-content-end">
+                <div class="col-3 p-1 d-flex align-items-end">
+                  <div class="imgContainer"> 
+                    <img src="../assets/img/CardsCounter.png"/>
+                  </div>
                 </div>
+                <div class="col-6  p-1 d-flex justify-content-end me-3">
+                    <div class="imgContainer player border rounded-3 border-secondary" style="background-color: var(--navbar-rosita);">
+                        <img src="../assets/img/Player2.JPG"/>
+                    </div>
+                </div>
+            </div>
             </div>
             <div class="col-7 border rounded-5 p-sm-4  mt-1 border-primary-subtle" style="background-color: var(--navbar-azulito);" id="board">
                 <div class="container text-center">
