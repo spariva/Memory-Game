@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', function () {
+let music = document.getElementById("music");
+const musicButton = document.getElementById("musicBtn");
 const selectors = {
     boardContainer: document.querySelector('.board-container'),
     board: document.querySelector('.board'),
@@ -14,6 +17,18 @@ const state = {
     totalTime: 0,
     loop: null
 }
+
+const playMusic = () => {
+    // if (music.paused) {
+    //     music.play();
+
+    // } else {
+    //     music.pause();
+    // }
+    return music.paused ? music.play() : music.pause();
+}
+
+musicButton.addEventListener('click', playMusic);
 
 //Ni idea de esto pero he copiado la implementación de este algoritmo https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 const shuffle = array => {
@@ -76,12 +91,22 @@ const startGame = () => {
     state.gameStarted = true;
 
     state.loop = setInterval(() => {
+        if(!selectors.pause.className.includes('inactive')){
         state.totalTime++;
-
+        }
         selectors.moves.innerText = `${state.totalFlips} moves`;
         selectors.timer.innerText = `🕓 ${state.totalTime} sec`;
     }, 1000);
 }
+
+
+const pause = () => {
+    selectors.pause.classList.toggle('inactive');
+    selectors.pause.innerText = (selectors.pause.innerText === 'Pause !' ? 'Resume !' : 'Pause !');
+    clearInterval(state.loop);
+}
+
+selectors.pause.addEventListener('click', pause);
 
 const flipBackCards = () => {
     document.querySelectorAll('.card:not(.matched)').forEach(card => {
@@ -99,6 +124,10 @@ const flipCard = card => {
         startGame();
     }
 
+    if (!selectors.pause.className.includes('inactive')) {
+        pause();
+    }
+
     if (state.flippedCards <= 2) {
         card.classList.add('flipped');
     }
@@ -109,6 +138,8 @@ const flipCard = card => {
         if (flippedCards[0].innerText === flippedCards[1].innerText) {
             flippedCards[0].classList.add('matched');
             flippedCards[1].classList.add('matched');
+            let sonido = new Audio("../assets/audio/match.wav");
+            sonido.play();
         }
 
         setTimeout(() => {
@@ -116,7 +147,7 @@ const flipCard = card => {
         }, 1000)
     }
 
-    // If there are no more cards that we can flip, we won the game
+    // El juego acaba cuando no quedan cartas sin voltear.
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
             selectors.boardContainer.classList.add('flipped');
@@ -133,6 +164,7 @@ const flipCard = card => {
     }
 }
 
+
 const attachEventListeners = () => {
     document.addEventListener('click', event => {
         const eventTarget = event.target;
@@ -148,3 +180,4 @@ const attachEventListeners = () => {
 
 generateGame();
 attachEventListeners();
+});
