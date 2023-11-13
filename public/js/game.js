@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Empiezo con los datos del index:
 // const name = document.getElementById("name").value;
 // const numberPlayers = document.getElementById("numberPlayers").value;
-// const difficulty = document.getElementById("difficulty").value;
+//const difficulty = document.getElementById("difficulty").value;
 
 
 let music = document.getElementById("music");
@@ -76,6 +76,19 @@ const generateGame = () => {
     const emojis = ['🦷', '👽', '🦊', '🦀', '☀️', '⚧️', '⛈️', '🎓', '🎪', '🌍'];
     const difficultEmojis = ['🕜', '🕑', '🕝', '🕒', '🕞', '🕓', '🕟', '🕔'];
     const chars = 'https://picsum.photos/200';
+    // if(difficulty.value === "easy"){
+    //     dimensions = 2;
+    //     const emojis = emoji;
+    // } else if(difficulty.value === "medium"){
+    //     dimensions = 4;
+    //     const emojis = emoji;
+    // } else if(difficulty.value === "hard"){
+    //     dimensions = 4;
+    //     const emojis = chars;
+    // } else if(difficulty.value === "impossible"){
+    //     dimensions = 4;
+    //     const emojis = difficultEmojis;
+    // }
     const picks = pickRandom(emojis, (dimensions * dimensions) / 2); 
     const items = shuffle([...picks, ...picks]);
     const cards = `
