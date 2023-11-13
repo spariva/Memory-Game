@@ -1,4 +1,4 @@
-/* Color schema based on my wireframe */
+/** Color schema based on my wireframe */
 
 :root {
     /* Cards */
@@ -104,10 +104,11 @@ img {
     }
 }
 
+/** Cards and their effects: */
 .card {
     position: relative;
     width: 100px;
-    height: 130px;
+    height: 150px;
     cursor: pointer;
 }
 
@@ -117,10 +118,18 @@ img {
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    background: var(--fondo-carta);
-    background-image: url(../img/cardFront.png);
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    background: var(--turquesa-claro);
+    transition: transform .8s cubic-bezier(0.21,-0.49,1,0.26);
     backface-visibility: hidden;
+}
+
+.card-back {
+    font-size: 28pt;
+    text-align: center;
+    line-height: 100px;
+    background: #FDF8E6;
+    transform: rotateY(180deg) rotateZ(50deg);
+    user-select: none;
 }
 
 .card.flipped .card-front {
@@ -131,19 +140,79 @@ img {
     transform: rotateY(0) rotateZ(0);
 }
 
-/*  Hover Card, scale up and down
 .card:hover {
     -webkit-transform: translateY(-3px);
             transform: translateY(-3px);
-    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1rem 3rem var(--turquesa-oscuro);
 }
   
 .card:hover::after {
     -webkit-transform: scaleX(1.4) scaleY(1.6);
             transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
-} */
+}
+/** Board */
+
+.disabled {
+    color: #757575;
+}
+
+.stats {
+    color: #FFF;
+    font-size: 14pt;
+}
+
+.board-container {
+    position: relative;
+}
+
+.board,
+.win {
+    border-radius: 5px;
+    box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
+    background: linear-gradient(155deg,  var(--menta-claro) 0%, var(--navbar-rosita) 70%,var(--fondo-rosa) 100%);
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.board {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px;
+}
+
+.board-container.flipped .board {
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+}
+
+/* Win animation */
+.win {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #FDF8E6;
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
+.win-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 21pt;
+    color: #282A3A;
+}
+
+
 
 /*  Flipping Code Pen: 
 .card__side {
