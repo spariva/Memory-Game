@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 // Empiezo con los datos del index:
-// const name = document.getElementById("name").value;
-// const numberPlayers = document.getElementById("numberPlayers").value;
-//const difficulty = document.getElementById("difficulty").value;
-
+const name = document.getElementById("name").value;
+const numberPlayers = document.getElementById("numberPlayers").value;
+const difficulty = document.getElementById("difficulty").value;
+console.log(difficulty);
 
 let music = document.getElementById("music");
 const musicButton = document.getElementById("musicBtn");
@@ -76,6 +76,29 @@ const generateGame = () => {
     const emojis = ['🦷', '👽', '🦊', '🦀', '☀️', '⚧️', '⛈️', '🎓', '🎪', '🌍'];
     const difficultEmojis = ['🕜', '🕑', '🕝', '🕒', '🕞', '🕓', '🕟', '🕔'];
     const chars = 'https://picsum.photos/200';
+    const selectedEmojis = "";
+    switch (difficulty.value) {
+        case "easy":
+            dimensions = 2;
+            selectedEmojis = emojis;
+            break;
+        case "medium":
+            dimensions = 4;
+            selectedEmojis = emojis;
+            break; 
+        case "hard":
+            dimensions = 4;
+            selectedEmojis = chars;
+            break;
+        case "impossible":
+            dimensions = 4;
+            selectedEmojis = difficultEmojis;
+            break;
+        default:
+            dimensions = 2;
+            selectedEmojis = emojis;
+            break;
+    }
     // if(difficulty.value === "easy"){
     //     dimensions = 2;
     //     const emojis = emoji;
@@ -89,7 +112,7 @@ const generateGame = () => {
     //     dimensions = 4;
     //     const emojis = difficultEmojis;
     // }
-    const picks = pickRandom(emojis, (dimensions * dimensions) / 2); 
+    const picks = pickRandom(selectedEmojis, (dimensions * dimensions) / 2); 
     const items = shuffle([...picks, ...picks]);
     const cards = `
         <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
