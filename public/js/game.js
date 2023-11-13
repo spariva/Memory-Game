@@ -1,8 +1,10 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 // Empiezo con los datos del index:
-const name = document.getElementById("name").value;
-const numberPlayers = document.getElementById("numberPlayers").value;
-const difficulty = document.getElementById("difficulty").value;
+const name = document.getElementById("name");
+const numberPlayers = document.getElementById("numberPlayers");
+const difficulty = document.getElementById("difficulty");
+const generateGameBtn = document.getElementById("generateGameBtn");
 console.log(difficulty);
 
 let music = document.getElementById("music");
@@ -67,7 +69,7 @@ const pickRandom = (array, items) => {
 
 //Aquí genero el juego dinámicamente dependiendo del size. He añadido un if para que no se pueda generar un tablero impar.
 const generateGame = () => {
-    const dimensions = selectors.board.getAttribute('size');
+    let dimensions = selectors.board.getAttribute('size');
 
     if (dimensions % 2 !== 0) {
         alert("It has to be even in order to match every couple.");
@@ -76,8 +78,8 @@ const generateGame = () => {
     const emojis = ['🦷', '👽', '🦊', '🦀', '☀️', '⚧️', '⛈️', '🎓', '🎪', '🌍'];
     const difficultEmojis = ['🕜', '🕑', '🕝', '🕒', '🕞', '🕓', '🕟', '🕔'];
     const chars = 'https://picsum.photos/200';
-    const selectedEmojis = "";
-    switch (difficulty.value) {
+    let selectedEmojis = "";
+    switch (difficulty.value) { 
         case "easy":
             dimensions = 2;
             selectedEmojis = emojis;
@@ -112,9 +114,10 @@ const generateGame = () => {
     //     dimensions = 4;
     //     const emojis = difficultEmojis;
     // }
-    const picks = pickRandom(selectedEmojis, (dimensions * dimensions) / 2); 
-    const items = shuffle([...picks, ...picks]);
-    const cards = `
+    console.log(selectedEmojis);
+    let picks = pickRandom(selectedEmojis, (dimensions * dimensions) / 2); 
+    let items = shuffle([...picks, ...picks]);
+    let cards = `
         <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
             ${items.map(item => `
                 <div class="card">
@@ -125,7 +128,7 @@ const generateGame = () => {
        </div>
     `
     //Aquí debería cambiarlo por un fragmento para optimizarlo creo.
-    const parser = new DOMParser().parseFromString(cards, 'text/html');
+    let parser = new DOMParser().parseFromString(cards, 'text/html');
 
     selectors.board.replaceWith(parser.querySelector('.board'));
 }
@@ -204,7 +207,7 @@ const flipCard = card => {
             selectors.boardContainer.classList.add('flipped');
             selectors.win.innerHTML = `
                 <span class="win-text">
-                    Victory ${name} <br />
+                    Victory ${name.value} <br />
                     with <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>
@@ -226,10 +229,14 @@ const attachEventListeners = () => {
             flipCard(eventParent);
             } else if (eventTarget === selectors.pause && !eventTarget.className.includes('paused')) {
                 startGame();
+        } else if (eventTarget === generateGameBtn) {
+            console.log(difficulty.value);
+            generateGame();
+            console.log("hola");
         }
     })
 }
 
-generateGame();
+
 attachEventListeners();
 });
