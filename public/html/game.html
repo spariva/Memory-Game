@@ -46,7 +46,7 @@
 <!--? Main -->
 <main class="p-2 mt-xl-3 mt-5">
     <div class="d-flex justify-content-end align-items-center mt-lg-5 me-5">
-        <div class="botonNav border rounded-4 me-4 mb-1 p-1">Sound on off</div>
+        <div class="botonNav border rounded-4 me-4 mb-1 p-1" id="sound">Sound on off</div>
     </div>
     <div class="container-fluid overflow-hidden px-lg-4 px-md-2 px-0">
         <div class="row gx-5 gap-md-5 gap-sm-2">
@@ -123,14 +123,14 @@
                 </div>
             </div>
             </div>
-            
+
             <!--? Board -->
             <div class="col-7 border rounded-5 p-sm-4  mt-1 border-primary-subtle p-3" style="background-color: var(--navbar-azulito);" id="boardPanel">
               <div class="game">
                 <div class="controls">
                     <div class="stats">
-                        <div class="moves">0 moves</div>
-                        <div class="timer">time: 0 sec</div>
+                        <div class="moves"></div>
+                        <div class="timer"></div>
                     </div>
                 </div>
                 <div class="board-container">
@@ -142,7 +142,7 @@
                       <div class="col">
                           <div class="card">
                             <div class="card-front"></div>
-                            <div class="card-back">🥔</div>
+                            <div class="card-back"></div>
                           </div>
                         </div>
                       </div>

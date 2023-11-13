@@ -1,4 +1,5 @@
 /** Color schema based on my wireframe */
+@import url('https://fonts.googleapis.com/css?family=Playpen+Sans');
 
 :root {
     /* Cards */
@@ -20,6 +21,10 @@
   --verde-carta: #2f9e44;
   /* Instructions */
   --amarillo-fondo: #fff9db;
+}
+
+html, body{
+    font-family: 'Playpen Sans', sans-serif;
 }
 
 .botonNav{
@@ -107,10 +112,27 @@ img {
 /** Cards and their effects: */
 .card {
     position: relative;
-    width: 100px;
+    width: 120px;
     height: 150px;
     cursor: pointer;
 }
+
+/* Para poner la imagen de carta, pero no me da tiempo a cuadrarlo.
+.card-front{
+    background-image: url(../assets/img/cardFront.png);
+    max-width: 100%;
+    height: 100%;
+}
+
+.card-front img{
+    max-width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
 
 .card-front,
 .card-back {
@@ -118,7 +140,8 @@ img {
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    background: var(--turquesa-claro);
+    background-color: var(--turquesa-claro);
+    border: 1px solid var(--navbar-texto);
     transition: transform .8s cubic-bezier(0.21,-0.49,1,0.26);
     backface-visibility: hidden;
 }
@@ -154,8 +177,8 @@ img {
 }
 /** Board */
 
-.disabled {
-    color: #757575;
+.inactive {
+    color: var(--amarillo-fondo);
 }
 
 .stats {
@@ -169,17 +192,15 @@ img {
 
 .board,
 .win {
-    border-radius: 5px;
-    box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
-    background: linear-gradient(155deg,  var(--menta-claro) 0%, var(--navbar-rosita) 70%,var(--fondo-rosa) 100%);
     transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
     backface-visibility: hidden;
 }
 
 .board {
-    padding: 20px;
+    overflow: hidden;
+    padding: 10px;
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
     grid-gap: 20px;
 }
 
