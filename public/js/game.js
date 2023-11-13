@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+// Empiezo con los datos del index:
+// const name = document.getElementById("name").value;
+// const numberPlayers = document.getElementById("numberPlayers").value;
+// const difficulty = document.getElementById("difficulty").value;
+
+
 let music = document.getElementById("music");
 const musicButton = document.getElementById("musicBtn");
 const selectors = {
@@ -66,9 +72,10 @@ const generateGame = () => {
     if (dimensions % 2 !== 0) {
         alert("It has to be even in order to match every couple.");
     }
-
-    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍'];
-    const img = 'https://picsum.photos/200';
+    
+    const emojis = ['🦷', '👽', '🦊', '🦀', '☀️', '⚧️', '⛈️', '🎓', '🎪', '🌍'];
+    const difficultEmojis = ['🕜', '🕑', '🕝', '🕒', '🕞', '🕓', '🕟', '🕔'];
+    const chars = 'https://picsum.photos/200';
     const picks = pickRandom(emojis, (dimensions * dimensions) / 2); 
     const items = shuffle([...picks, ...picks]);
     const cards = `
@@ -161,7 +168,7 @@ const flipCard = card => {
             selectors.boardContainer.classList.add('flipped');
             selectors.win.innerHTML = `
                 <span class="win-text">
-                    Victory <br />
+                    Victory ${name} <br />
                     with <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>

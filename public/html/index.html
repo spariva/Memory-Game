@@ -2,21 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta author="Maki Spariva">
     <title>Memory Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="../css/normalize.css">
-    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script defer src="../js/main.js"></script>
-<!-- Navbar -->
-<div class="container">
-    <nav class="navbar navbar-expand-lg fixed-top border rounded-5 mx-3 mt-2 p-2" style="background-color: var(--navbar-rosita);">
+    <script defer src="../js/game.js"></script>
+
+<!--? Navbar -->
+<div class="container pb-5">
+    <nav class="navbar navbar-expand-lg fixed-top border rounded-5 mx-3 mt-2 p-2 border-danger-subtle" style="background-color: var(--navbar-rosita);">
         <div class="container-md">
             <a class="navbar-brand" style="color: var(--borde-menta);" href="#">
-                <img src="../assets/img/favicon.png" alt="Logo" width="36" height="30" class="d-inline-block align-text-top border rounded-5">
+                <img src="../assets/img/favicon.png" alt="Logo" width="36" height="30" class="d-inline-block align-text-top border rounded-5 ms-5">
                 Memory Game
                 <img src="../assets/img/favicon.png" alt="Logo" width="36" height="30" class="d-inline-block align-text-top border rounded-5">
             </a>
@@ -27,19 +29,54 @@
         <div class="collapse navbar-collapse justify-content-evenly me-lg-5 align-items-baseline nav-underline" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item p-3">
-                    <button class="btn me-2 botonNav" type="button" href="index.html">New Game</button>
+                    <button class="btn me-2 botonNav" type="button" href="index.html">
+                      <a class="nav-link display-3 text-center botonNav" href="index.html">New Game</a></button>
                 </li>
                 <li class="nav-item p-3">
-                    <button class="btn me-2 botonNav" type="button">Rules (?) </button>
-                </li>
-                <li class="nav-item p-3">
-                    <button class="btn me-2 botonNav" type="button">Pause</button>
+                    <button class="btn me-2 botonNav" type="button" id="rules">Rules (?) </button>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
-<!-- Main -->
+
+<!--? Main -->
+<main class="p-2 mt-xl-3 mt-5">
+  <audio id="music" loop src="../assets/audio/02 Duck Descending To Hell In An Elevator.mp3">Tu navegador no soporta audio.</audio>
+    <div class="d-flex justify-content-end align-items-center mt-lg-5 me-5">
+        <div class="botonNav border rounded-4 me-4 mb-1 p-1" id="musicBtn">Music on/off</div>
+    </div>
+    <div class="container-fluid overflow-hidden px-lg-4 px-md-2 px-0">
+        <div class="row gx-5 gap-md-5 gap-sm-2 mx-auto">
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="border rounded-4 p-4" style="background-color: var(--menta-claro);">
+                <form>
+                    <label>Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Your name" required>
+                    <br><br>
+                    <label>Number of players:</label>
+                    <select name="numberPlayers" id="numberPlayers" required>
+                        <option value="1">1</option>
+                        <option value="2" disabled>2</option>
+                    </select>
+                    <br><br>
+                    <label>Difficulty:</label>
+                    <select name="difficulty" id="difficulty" required>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="impossible">Impossible</option>
+                    </select>
+                    <br><br>
+                    <div class="text-center mt-2">
+                        <button class="btn me-2 botonNav" type="button" href="index.html">
+                            <a class="nav-link display-3 text-center botonNav" href="game.html">Start Game</a>
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
 
 </body>
 </html>
