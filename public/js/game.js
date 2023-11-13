@@ -90,8 +90,10 @@ const generateGame = () => {
 const startGame = () => {
     state.gameStarted = true;
 
+
     state.loop = setInterval(() => {
-        if(!selectors.pause.className.includes('inactive')){
+        //Pauso el tiempo si está en pause.
+        if(!selectors.pause.className.includes('paused')){
         state.totalTime++;
         }
         selectors.moves.innerText = `${state.totalFlips} moves`;
@@ -101,9 +103,11 @@ const startGame = () => {
 
 
 const pause = () => {
-    selectors.pause.classList.toggle('inactive');
-    selectors.pause.innerText = (selectors.pause.innerText === 'Pause !' ? 'Resume !' : 'Pause !');
-    clearInterval(state.loop);
+    if (state.gameStarted != true) {
+        startGame();
+    }
+    selectors.pause.classList.toggle('paused');
+    selectors.pause.innerText = (selectors.pause.innerText === 'Resume !' ? 'Pause !' : 'Resume !');
 }
 
 selectors.pause.addEventListener('click', pause);
@@ -119,14 +123,16 @@ const flipBackCards = () => {
 const flipCard = card => {
     state.flippedCards++;
     state.totalFlips++;
+    
+    if (selectors.pause.className.includes('paused')) {
+        pause();
+    }
 
     if (!state.gameStarted) {
         startGame();
     }
 
-    if (!selectors.pause.className.includes('inactive')) {
-        pause();
-    }
+
 
     if (state.flippedCards <= 2) {
         card.classList.add('flipped');
@@ -150,14 +156,17 @@ const flipCard = card => {
     // El juego acaba cuando no quedan cartas sin voltear.
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
+            let sonido = new Audio("../assets/audio/victory.wav");
+            sonido.play();
             selectors.boardContainer.classList.add('flipped');
             selectors.win.innerHTML = `
                 <span class="win-text">
-                    You won!<br />
+                    Victory <br />
                     with <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>
             `
+
 
             clearInterval(state.loop);
         }, 1000)
@@ -172,7 +181,7 @@ const attachEventListeners = () => {
 
         if (eventTarget.className.includes('card') && !eventParent.className.includes('flipped')) {
             flipCard(eventParent);
-            } else if (eventTarget === selectors.pause && !eventTarget.className.includes('inactive')) {
+            } else if (eventTarget === selectors.pause && !eventTarget.className.includes('paused')) {
                 startGame();
         }
     })
