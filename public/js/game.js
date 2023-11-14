@@ -79,6 +79,7 @@ const generateGame = () => {
     const difficultEmojis = ['🕜', '🕑', '🕝', '🕒', '🕞', '🕓', '🕟', '🕔'];
     const chars = 'https://picsum.photos/200';
     let selectedEmojis = "";
+    
     switch (difficulty.value) { 
         case "easy":
             dimensions = 2;
@@ -101,19 +102,7 @@ const generateGame = () => {
             selectedEmojis = emojis;
             break;
     }
-    // if(difficulty.value === "easy"){
-    //     dimensions = 2;
-    //     const emojis = emoji;
-    // } else if(difficulty.value === "medium"){
-    //     dimensions = 4;
-    //     const emojis = emoji;
-    // } else if(difficulty.value === "hard"){
-    //     dimensions = 4;
-    //     const emojis = chars;
-    // } else if(difficulty.value === "impossible"){
-    //     dimensions = 4;
-    //     const emojis = difficultEmojis;
-    // }
+    
     console.log(selectedEmojis);
     let picks = pickRandom(selectedEmojis, (dimensions * dimensions) / 2); 
     let items = shuffle([...picks, ...picks]);
@@ -135,7 +124,6 @@ const generateGame = () => {
 
 const startGame = () => {
     state.gameStarted = true;
-
 
     state.loop = setInterval(() => {
         //Pauso el tiempo si está en pause.
@@ -178,8 +166,6 @@ const flipCard = card => {
         startGame();
     }
 
-
-
     if (state.flippedCards <= 2) {
         card.classList.add('flipped');
     }
@@ -204,16 +190,29 @@ const flipCard = card => {
         setTimeout(() => {
             let sonido = new Audio("../assets/audio/victory.wav");
             sonido.play();
-            selectors.boardContainer.classList.add('flipped');
-            selectors.win.innerHTML = `
+            pause();
+            //Victory gif: TODO reescalate snail in small screens.
+            let img = document.createElement('img');
+            img.src = 'https://example.com/path-to-your-gif.gif';
+            document.body.appendChild(img);
+            if(state.totalTime > 10 && difficulty.value === "easy"){
+                selectors.win.innerHTML += `
                 <span class="win-text">
-                    Victory ${name.value} <br />
-                    with <span class="highlight">${state.totalFlips}</span> moves<br />
+                    You are a <span class="highlight">beginner  ${name.value}</span>
+                    Try to do it in less than 10 seconds next time!
+                </span>
+                <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/b4n53QFvxlA26woFsl" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/snail-slug-cute-b4n53QFvxlA26woFsl">via GIPHY</a></p>
+            `
+            } else {
+                selectors.win.innerHTML = `
+                <span class="win-text">
+                    Congrats ${name.value} <br />
+                    <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>
             `
-
-
+            }
+            selectors.boardContainer.classList.add('flipped');
             clearInterval(state.loop);
         }, 1000)
     }
@@ -231,8 +230,8 @@ const attachEventListeners = () => {
                 startGame();
         } else if (eventTarget === generateGameBtn) {
             console.log(difficulty.value);
+            eventParent.parentElement.parentElement.style.display = "none"; //Luego soluciono lo del bisabuelo.
             generateGame();
-            console.log("hola");
         }
     })
 }

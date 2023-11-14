@@ -13,7 +13,7 @@ To get started, open `index.html` and start playing.
 
 ## Wireframe
 https://excalidraw.com/#json=AwEwVknCUaSenSDV31utH,9YsoEsz3U2sdYki9MXQffQ
-![Alt text](public/assets/img/image1.png)
+![Board's image with soft colors](public/assets/img/image-2.png)
 
 
 
@@ -28,7 +28,7 @@ In your turn you pick two cards, in case they match, you collect them.
 >I added some exceptions, as a timer and bonus cards
 >The bonus cards might change the game, as they allow you to peek some cards, delete them, auto-complete a matching set or steal time from your opponent.
 
-![Instructions screenshot](public/assets/img/inst.png)
+![Instructions screenshot](public/assets/img/instructions.png)
 
 ### How do I win bonus cards?
 They might appear once you pick some cards, or you might gain them if you are losing. 
