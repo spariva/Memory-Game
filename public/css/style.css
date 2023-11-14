@@ -151,12 +151,12 @@ img {
     text-align: center;
     line-height: 100px;
     background: #FDF8E6;
-    transform: rotateY(180deg) rotateZ(50deg);
+    transform: rotateY(180deg) rotateZ(120deg);
     user-select: none;
 }
 
 .card.flipped .card-front {
-    transform: rotateY(180deg) rotateZ(50deg);
+    transform: rotateY(180deg) rotateZ(40deg);
 }
 
 .card.flipped .card-back {
@@ -184,6 +184,7 @@ img {
 .stats {
     color: #FFF;
     font-size: 14pt;
+    text-align: center;
 }
 
 .board-container {
