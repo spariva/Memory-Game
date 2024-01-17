@@ -246,25 +246,26 @@ img {
 /* Shuffle animation: apart from rotate I want it to translate it all the cards to the center*/
 @keyframes shuffle {
     0% {
-        transform: translate3d(0, 0, 0);
+        transform: translate(0, 0);
     }
 
     25% {
-        transform: translate3d(0, 100%, -100px) rotateX(90deg) translateX(100px);
+        transform: translate(0, -100%);
     }
 
     50% {
-        transform: translate3d(0, 60%, -200px) rotateY(180deg);
+        transform: translate(0, -100%) rotate(90deg);
     }
 
     75% {
-        transform: translate3d(0, -40%, -300px) rotateZ(270deg);
+        transform: translate(0, -100%) rotate(180deg);
     }
 
     100% {
-        transform: translate3d(0, 0, 0) rotate(360deg);
+        transform: translate(0, 0) rotate(360deg);
     }
 }
+
 
 @keyframes animated_div {
     0% {
@@ -301,9 +302,12 @@ img {
 
 /* In the shuffle class, apply the animation */
 .shuffled {
-    animation: shuffle 5s ease-in-out;
+    animation: shuffle 1s ease-in-out alternate 2 ; 
 }
 
+.shuffled-infinite{
+    animation: shuffle 3s ease-in-out alternate infinite; 
+}
 
 
 /* @keyframes shuffle {
