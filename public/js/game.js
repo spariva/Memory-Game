@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let cards = `
         <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
             ${items.map(item => `
-                <div class="card">
+                <div class="card shuffled">
                     <div class="card-front"></div>
                     <div class="card-back">${item}</div>
                 </div>
