@@ -1,5 +1,6 @@
 # Memory-Game
-A card memory game to practice my Js skills.
+A fun twist to the classic memory game. I made this to practice my vanilla Js skills and play with the design tools and Bootstrap. 
+
 ## Table of Contents
 * [Instructions](#instructions)
 * [Wireframe](#wireframe)
@@ -8,6 +9,7 @@ A card memory game to practice my Js skills.
 * [Dependencies](#dependencies)
 * [Author](https://github.com/spariva)
 * [License](#license)
+
 ## Instructions
 To get started, open `index.html` and start playing.
 
@@ -16,10 +18,9 @@ https://excalidraw.com/#json=AwEwVknCUaSenSDV31utH,9YsoEsz3U2sdYki9MXQffQ
 ![Board's image with soft colors](public/assets/img/image-2.png)
 
 
-
 ## Contributing
 I would love if this repository inspire you in any way, so feel free to fork and twink with the code.
- >Although, maybe I will leave my original version in one branch. Anyways, I most likely will accept pull requests.
+ >Although, I will leave my original version in one branch. But I most likely will accept pull requests.
 
 ## How to play
 Having fun is the most important thing, but if you also wanna win, then collect as many matching cards as you can. 
@@ -34,9 +35,6 @@ In your turn you pick two cards, in case they match, you collect them.
 They might appear once you pick some cards, or you might gain them if you are losing. 
 >If you plan to fork this repo, feel free to get creative in this section!
 
-## Dependencies
-
-## License
 
 
 
